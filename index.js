@@ -11,7 +11,9 @@ SEARCH_FORM.addEventListener("submit", function (event) {
   );
 
   XHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//   XHR.setRequestHeader("Access-Control-Allow-Origin", "*");
+  XHR.setRequestHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+  XHR.setRequestHeader("Pragma", "no-cache");
+  XHR.setRequestHeader("Expires", "0");
 
   XHR.addEventListener("load", function (event) {
     console.log("SUCCESS");
