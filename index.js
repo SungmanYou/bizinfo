@@ -14,6 +14,7 @@ SEARCH_FORM.addEventListener("submit", function (event) {
   XHR.setRequestHeader("Cache-Control", "no-cache, no-store, must-revalidate");
   XHR.setRequestHeader("Pragma", "no-cache");
   XHR.setRequestHeader("Expires", "0");
+  XHR.setRequestHeader("Authorization", "");
 
   XHR.addEventListener("load", function (event) {
     console.log("SUCCESS");
