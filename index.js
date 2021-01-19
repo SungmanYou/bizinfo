@@ -1,9 +1,9 @@
-const SEARCH_FORM = document.getElementById("searchForm");
-SEARCH_FORM.addEventListener("submit", function (event) {
+var searchForm = document.getElementById("searchForm");
+searchForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  const XHR = new XMLHttpRequest();
-  const FORM_DATA = new FormData(SEARCH_FORM);
+  var XHR = new XMLHttpRequest();
+  var FORM_DATA = new FormData(searchForm);
 
   XHR.open(
     "POST",
