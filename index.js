@@ -1,47 +1,64 @@
-var searchForm = document.getElementById("searchForm");
-searchForm.addEventListener("submit", function (event) {
-  event.preventDefault();
+var url = "https://www.kcomwel.or.kr/kcomwel/paym/insu/srch.jsp?confirmyn=Y";
 
-  var XHR = new XMLHttpRequest();
-  var FORM_DATA = new FormData(searchForm);
+var xhr = new XMLHttpRequest();
+xhr.open("POST", url);
 
-  XHR.open(
-    "POST",
-    "https://www.kcomwel.or.kr/kcomwel/paym/insu/srch.jsp?confirmyn=Y"
-  );
+xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-  XHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  XHR.setRequestHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-  XHR.setRequestHeader("Pragma", "no-cache");
-  XHR.setRequestHeader("Expires", "0");
-  XHR.setRequestHeader("Authorization", "");
+xhr.onreadystatechange = function () {
+   if (xhr.readyState === 4) {
+      console.log(xhr.status);
+      console.log(xhr.responseText);
+   }};
 
-  XHR.addEventListener("load", function (event) {
-    console.log("SUCCESS");
-    console.log(event);
-  });
+var data = "flag=2&type=saeopjang_nm&searchValue=%EC%82%AC%EB%8B%A8%EB%B2%95%EC%9D%B8%ED%99%94%EC%84%B1%EC%8B%9C%EC%9E%90%EC%9B%90%EB%B4%89%EC%82%AC%EC%84%BC%ED%84%B0&branch=5190";
 
-  XHR.addEventListener("error", function (event) {
-    console.log("ERROR");
-    console.log(event);
-  });
+xhr.send(data);
 
-  console.log(XHR);
-  XHR.send(FORM_DATA);
-});
+// var searchForm = document.getElementById("searchForm");
+// searchForm.addEventListener("submit", function (event) {
+//   event.preventDefault();
 
-function urlencodeFormData(fd) {
-  var s = "";
-  function encode(s) {
-    return encodeURIComponent(s).replace(/%20/g, "+");
-  }
-  for (var pair of fd.entries()) {
-    if (typeof pair[1] == "string") {
-      s += (s ? "&" : "") + encode(pair[0]) + "=" + encode(pair[1]);
-    }
-  }
-  return s;
-}
+//   var XHR = new XMLHttpRequest();
+//   var FORM_DATA = new FormData(searchForm);
+
+//   XHR.open(
+//     "POST",
+//     "https://www.kcomwel.or.kr/kcomwel/paym/insu/srch.jsp?confirmyn=Y"
+//   );
+
+//   XHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//   XHR.setRequestHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+//   XHR.setRequestHeader("Pragma", "no-cache");
+//   XHR.setRequestHeader("Expires", "0");
+//   XHR.setRequestHeader("Authorization", "");
+
+//   XHR.addEventListener("load", function (event) {
+//     console.log("SUCCESS");
+//     console.log(event);
+//   });
+
+//   XHR.addEventListener("error", function (event) {
+//     console.log("ERROR");
+//     console.log(event);
+//   });
+
+//   console.log(XHR);
+//   XHR.send(FORM_DATA);
+// });
+
+// function urlencodeFormData(fd) {
+//   var s = "";
+//   function encode(s) {
+//     return encodeURIComponent(s).replace(/%20/g, "+");
+//   }
+//   for (var pair of fd.entries()) {
+//     if (typeof pair[1] == "string") {
+//       s += (s ? "&" : "") + encode(pair[0]) + "=" + encode(pair[1]);
+//     }
+//   }
+//   return s;
+// }
 // function popJisa() {
 //   window.open(
 //     "/_custom/kcom/_common/board/index/223.jsp",
