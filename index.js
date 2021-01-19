@@ -4,6 +4,7 @@ var xhr = new XMLHttpRequest();
 xhr.open("POST", url);
 
 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
 
 xhr.onreadystatechange = function () {
    if (xhr.readyState === 4) {
